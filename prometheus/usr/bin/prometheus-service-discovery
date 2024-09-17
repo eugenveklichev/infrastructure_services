@@ -1,0 +1,13 @@
+#!/bin/bash
+
+PROMETHEUS_HOME='/opt/prometheus'
+PROMETHEUS_TMPDIR='/tmp/prometheus'
+SOURCES=$(find ${PROMETHEUS_HOME}/ -type f -name 'prometheus-discovery-job-*.list')
+
+[[ -z ${SOURCES} ]] && exit 1
+
+for PROMETHEUS_DISCOVERY_LIST in ${SOURCES}
+do
+    PROMETHEUS_TARGET_FILE=${PROMETHEUS_TMPDIR}/$(basename -s .list ${PROMETHEUS_DISCOVERY_LIST}).json
+    /usr/bin/python2 /usr/bin/prometheus-discovery-dns.py ${PROMETHEUS_DISCOVERY_LIST} ${PROMETHEUS_TARGET_FILE}
+done

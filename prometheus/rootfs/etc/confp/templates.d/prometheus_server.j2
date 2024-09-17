@@ -1,0 +1,7 @@
+#!/bin/bash
+
+/opt/prometheus/prometheus \
+            --config.file /opt/prometheus/prometheus.yml \
+            --web.listen-address=0.0.0.0:9090 \
+            --storage.tsdb.path=/mnt/data \
+            --storage.tsdb.retention.time=8d

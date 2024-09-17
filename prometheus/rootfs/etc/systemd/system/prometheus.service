@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus is an open-source systems monitoring and alerting toolkit
+Requires=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/prometheus
+ExecStart=/opt/prometheus/prometheus_server
+Restart=always
+SyslogFacility=local4
+SyslogIdentifier=prometheus
+
+[Install]
+WantedBy=multi-user.target

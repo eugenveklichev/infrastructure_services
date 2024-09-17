@@ -1,0 +1,8 @@
+name: prometheus
+
+templates:
+  - src: /etc/confp/templates.d/prometheus.yml
+    dest: /opt/prometheus/prometheus.yml
+
+  - src: /etc/confp/templates.d/prometheus_server.j2
+    dest: /opt/prometheus/prometheus_server

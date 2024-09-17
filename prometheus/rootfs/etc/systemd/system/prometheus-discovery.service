@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus service discovery by DNS
+Requires=network.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+User=odkl.datalab
+WorkingDirectory=/tmp/prometheus
+ExecStart=/bin/bash /usr/bin/prometheus-service-discovery
+SyslogFacility=local4
+SyslogIdentifier=prometheus-discovery
+
+[Install]
+WantedBy=multi-user.target
